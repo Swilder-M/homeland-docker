@@ -1,7 +1,7 @@
-RAKE = docker-compose run app bundle exec rake
-RUN = docker-compose run app
-RUN_DB = docker-compose run postgresql
-RUN_WEB = docker-compose run web
+RAKE = docker compose run app bundle exec rake
+RUN = docker compose run app
+RUN_DB = docker compose run postgresql
+RUN_WEB = docker compose run web
 
 include app.local.env
 export
@@ -14,24 +14,24 @@ install:
 	@$(RUN) bundle exec rails db:seed
 update:
 	@sh ./scripts/create-version
-	@docker-compose pull
+	@docker compose pull
 	@make secret
 	@touch app.local.env
 	@make restart
 	@docker tag homeland/homeland:latest homeland/homeland:$$(date "+%Y%m%d%H%M%S")
 restart:
 	@sh ./scripts/restart-app
-	@docker-compose stop web
-	@docker-compose up -d web
-	@docker-compose stop app_backup
+	@docker compose stop web
+	@docker compose up -d web
+	@docker compose stop app_backup
 start:
-	@docker-compose up -d
+	@docker compose up -d
 status:
-	@docker-compose ps
+	@docker compose ps
 stop:
-	@docker-compose stop web app app_backup worker
+	@docker compose stop web app app_backup worker
 stop-all:
-	@docker-compose down
+	@docker compose down
 rollback:
 	@sh ./scripts/rollback-app
 console:
