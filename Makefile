@@ -18,7 +18,7 @@ update:
 	@make secret
 	@touch app.local.env
 	@make restart
-	@docker tag homeland/homeland:latest homeland/homeland:$$(date "+%Y%m%d%H%M%S")
+	@docker tag codming/homeland-arm:latest codming/homeland-arm:$$(date "+%Y%m%d%H%M%S")
 restart:
 	@sh ./scripts/restart-app
 	@docker compose stop web

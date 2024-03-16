@@ -2,7 +2,7 @@
 if [ -z ${IMAGE_VERSION+x} ];then
   IMAGE_VERSION=latest
 fi
-image_name="homeland/homeland"
+image_name="codming/homeland-arm"
 version=$(date "+%Y%m%d%H%M%S")
 current_version=$IMAGE_VERSION
 echo "Tag: $current_version -> $version"
