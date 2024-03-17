@@ -29,7 +29,7 @@ start:
 status:
 	@docker compose ps
 stop:
-	@docker compose stop caddy web app app_backup worker
+	@docker compose stop web app app_backup worker
 stop-all:
 	@docker compose down
 rollback:
