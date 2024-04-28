@@ -1,9 +1,0 @@
-{
-	auto_https disable_redirects
-}
-
-{$domain}
-
-reverse_proxy {
-  to web:80
-}

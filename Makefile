@@ -47,4 +47,4 @@ clean:
 	@docker ps -aqf status=exited | xargs docker rm && docker images -qf dangling=true | xargs docker rmi
 backup:
 	@echo "Backing up database..."
-	@$(RUN_DB) pg_dump -d homeland -h postgresql -U postgres > postgres.sql
+	@$(RUN_DB) pg_dump -d homeland -h postgresql -U postgres > backup/postgres.sql
