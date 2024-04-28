@@ -42,9 +42,6 @@ reindex:
 secret:
 	@test -f app.secret.env || echo "SECRET_KEY_BASE=`openssl rand -hex 32`" > app.secret.env
 	@cat app.secret.env
-clean:
-	@echo "Clean Docker images..."
-	@docker ps -aqf status=exited | xargs docker rm && docker images -qf dangling=true | xargs docker rmi
 backup:
 	@echo "Backing up database..."
-	@$(RUN_DB) pg_dump -d homeland -h postgresql -U postgres > backup/postgres.sql
+	@$(RUN_DB) pg_dump -d homeland -h postgresql -U postgres > postgres.sql
