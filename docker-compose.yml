@@ -23,7 +23,7 @@ services:
 
   app: &app_base
     container_name: 'homeland_app'
-    image: codming/homeland-arm:${IMAGE_VERSION:-v3.10.5}
+    image: codming/homeland-arm:${IMAGE_VERSION:-v3.10.6}
     env_file:
       - app.secret.env
       - app.local.env
