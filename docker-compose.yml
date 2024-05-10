@@ -5,11 +5,12 @@ services:
     container_name: 'homeland_postgresql'
     image: postgres:9.5-alpine
     ports:
-      - '5432'
+      - '5432:5432'
     environment:
       - POSTGRES_HOST_AUTH_METHOD=trust
     volumes:
       - ./data/postgresql:/var/lib/postgresql/data
+    command: postgres -c shared_preload_libraries=pg_stat_statements -c pg_stat_statements.track=all -c max_connections=500
 
   redis:
     container_name: 'homeland_redis'
@@ -23,7 +24,7 @@ services:
 
   app: &app_base
     container_name: 'homeland_app'
-    image: codming/homeland-arm:${IMAGE_VERSION:-v3.10.13}
+    image: codming/homeland-arm:${IMAGE_VERSION:-v3.10.14}
     env_file:
       - app.secret.env
       - app.local.env
