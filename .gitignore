@@ -6,3 +6,4 @@ tmp
 app.local.env
 app.secret.env
 .previous-version
+setting.txt
