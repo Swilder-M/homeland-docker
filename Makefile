@@ -44,4 +44,4 @@ secret:
 	@cat app.secret.env
 backup:
 	@echo "Backing up database..."
-	@$(RUN_DB) pg_dump -d homeland -h postgresql -U postgres > db-backup/postgres-`date "+%Y%m%d%H%M%S"`.sql
+	@$(RUN_DB) --rm pg_dump -d homeland -h postgresql -U postgres > db-backup/postgres-`date "+%Y%m%d%H%M%S"`.sql
