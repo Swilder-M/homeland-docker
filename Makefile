@@ -1,6 +1,6 @@
 RAKE = docker compose run app bundle exec rake
 RUN = docker compose run app
-RUN_DB = docker compose run postgresql
+RUN_DB = docker compose run --rm postgresql
 RUN_WEB = docker compose run web
 
 include app.local.env
@@ -44,4 +44,4 @@ secret:
 	@cat app.secret.env
 backup:
 	@echo "Backing up database..."
-	@$(RUN_DB) --rm pg_dump -d homeland -h postgresql -U postgres > db-backup/postgres-`date "+%Y%m%d%H%M%S"`.sql
+	@$(RUN_DB) pg_dump -d homeland -h postgresql -U postgres > db-backup/postgres-`date "+%Y%m%d%H%M%S"`.sql
